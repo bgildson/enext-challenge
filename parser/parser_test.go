@@ -417,6 +417,7 @@ func TestProcessLines(t *testing.T) {
 			},
 			out: []*Game{
 				{
+					ID:         "1",
 					TotalKills: 0,
 					Players:    []string{},
 					Kills:      map[string]int{},
@@ -466,6 +467,7 @@ func TestProcessLines(t *testing.T) {
 			},
 			out: []*Game{
 				{
+					ID:         "1",
 					TotalKills: 5,
 					Players:    []string{"Isgalamido", "Mocinha"},
 					Kills: map[string]int{
@@ -547,6 +549,7 @@ func TestProcessLines(t *testing.T) {
 			},
 			out: []*Game{
 				{
+					ID:         "1",
 					TotalKills: 5,
 					Players:    []string{"Isgalamido", "Mocinha"},
 					Kills: map[string]int{
@@ -555,6 +558,7 @@ func TestProcessLines(t *testing.T) {
 					},
 				},
 				{
+					ID:         "2",
 					TotalKills: 4,
 					Players:    []string{"Isgalamido", "Dono da Bola", "Zeh"},
 					Kills: map[string]int{

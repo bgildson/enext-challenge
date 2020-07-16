@@ -2,6 +2,7 @@ package parser
 
 import (
 	"regexp"
+	"strconv"
 )
 
 // Kill represents a kill in game
@@ -46,14 +47,16 @@ func (l *Line) IsStartGame() bool {
 
 // Game represents the game stats
 type Game struct {
+	ID         string         `json:"id"`
 	TotalKills int            `json:"total_kills"`
 	Players    []string       `json:"players"`
 	Kills      map[string]int `json:"kills"`
 }
 
-// NewGame creates a new Game instance
-func NewGame() *Game {
+// NewGameEmpty creates a new Game instance
+func NewGameEmpty() *Game {
 	return &Game{
+		ID:         "",
 		TotalKills: 0,
 		Players:    []string{},
 		Kills:      map[string]int{},
@@ -109,6 +112,7 @@ func ProcessLines(lines []string) []*Game {
 	var gs []*Game
 
 	var g *Game
+	currentID := 1
 	for _, text := range lines {
 		l := NewLine(text)
 
@@ -117,7 +121,9 @@ func ProcessLines(lines []string) []*Game {
 				gs = append(gs, g)
 			}
 
-			g = NewGame()
+			g = NewGameEmpty()
+			g.ID = strconv.Itoa(currentID)
+			currentID++
 		}
 
 		k := l.AsKill()

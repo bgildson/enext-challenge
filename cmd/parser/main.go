@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strconv"
 
 	"github.com/bgildson/enext-challenge/parser"
 )
@@ -35,9 +34,8 @@ func main() {
 
 	// generate a map to add "ids" for every game
 	gamesMap := map[string]*parser.Game{}
-	for i, game := range games {
-		gameKey := strconv.Itoa(i + 1)
-		gamesMap[gameKey] = game
+	for _, game := range games {
+		gamesMap[game.ID] = game
 	}
 
 	// serialize games map
