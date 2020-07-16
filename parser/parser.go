@@ -15,6 +15,13 @@ type Line struct {
 	line string
 }
 
+// NewLine creates a new Line instance
+func NewLine(text string) *Line {
+	return &Line{
+		line: text,
+	}
+}
+
 // AsKill try to handle the line as a kill
 // when is not possible, returns nil
 func (l *Line) AsKill() *Kill {
@@ -42,6 +49,15 @@ type Game struct {
 	TotalKills int            `json:"total_kills"`
 	Players    []string       `json:"players"`
 	Kills      map[string]int `json:"kills"`
+}
+
+// NewGame creates a new Game instance
+func NewGame() *Game {
+	return &Game{
+		TotalKills: 0,
+		Players:    []string{},
+		Kills:      map[string]int{},
+	}
 }
 
 // PlayerExists verify if just exists a player
@@ -86,4 +102,32 @@ func (g *Game) AddKill(k *Kill) {
 	} else {
 		g.Kills[k.Killer]++
 	}
+}
+
+// ProcessLines takes as input the log lines, process it and return stat games
+func ProcessLines(lines []string) []*Game {
+	var gs []*Game
+
+	var g *Game
+	for _, text := range lines {
+		l := NewLine(text)
+
+		if l.IsStartGame() {
+			if g != nil {
+				gs = append(gs, g)
+			}
+
+			g = NewGame()
+		}
+
+		k := l.AsKill()
+		if k != nil {
+			g.AddKill(k)
+		}
+	}
+	if g != nil {
+		gs = append(gs, g)
+	}
+
+	return gs
 }
