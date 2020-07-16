@@ -357,6 +357,32 @@ func TestGameAddKill(t *testing.T) {
 				},
 			},
 		},
+		{
+			description: "add a kill with killer and dead been the same player",
+			in: Entry{
+				game: Game{
+					TotalKills: 4,
+					Players:    []string{"player one", "player two"},
+					Kills: map[string]int{
+						"player one": 2,
+						"player two": 2,
+					},
+				},
+				kill: Kill{
+					Killer: "player three",
+					Dead:   "player three",
+				},
+			},
+			out: Game{
+				TotalKills: 5,
+				Players:    []string{"player one", "player two", "player three"},
+				Kills: map[string]int{
+					"player one":   2,
+					"player two":   2,
+					"player three": 0,
+				},
+			},
+		},
 	}
 
 	for _, tc := range tt {

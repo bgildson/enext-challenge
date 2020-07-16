@@ -75,6 +75,11 @@ func (g *Game) AddKill(k *Kill) {
 	// try to add dead player
 	g.AddPlayer(k.Dead)
 
+	// when the killer and the dead was the same player, does nothing
+	if k.Killer == k.Dead {
+		return
+	}
+
 	// contabilize new kill to player
 	if k.Killer == "<world>" {
 		g.Kills[k.Dead]--
