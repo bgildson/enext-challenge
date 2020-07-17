@@ -1,0 +1,36 @@
+{
+  "1": {
+    "id": "1",
+    "total_kills": 0,
+    "players": [],
+    "kills": {}
+  },
+  "2": {
+    "id": "2",
+    "total_kills": 11,
+    "players": [
+      "Isgalamido",
+      "Mocinha"
+    ],
+    "kills": {
+      "Isgalamido": -7,
+      "Mocinha": 0
+    }
+  },
+  "3": {
+    "id": "3",
+    "total_kills": 4,
+    "players": [
+      "Isgalamido",
+      "Mocinha",
+      "Zeh",
+      "Dono da Bola"
+    ],
+    "kills": {
+      "Dono da Bola": -1,
+      "Isgalamido": 1,
+      "Mocinha": 0,
+      "Zeh": -2
+    }
+  }
+}
