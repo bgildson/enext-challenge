@@ -61,7 +61,6 @@ func (r *jsonGamesRepository) GetByID(id string) (*parser.Game, error) {
 
 	var game *parser.Game
 	if err := json.Unmarshal(b, &game); err != nil {
-		fmt.Println(err)
 		return nil, ErrMalformedDatabaseResult
 	}
 
