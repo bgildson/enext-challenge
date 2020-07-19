@@ -5,6 +5,7 @@ import (
 	"os"
 	"path"
 	"reflect"
+	"sort"
 	"testing"
 )
 
@@ -93,8 +94,13 @@ func TestJSONDatabaseGet(t *testing.T) {
 
 	for _, tc := range tt {
 		t.Run(tc.description, func(t *testing.T) {
-			// make comparation with bytes to correctly compare
 			r, _ := tc.in.Get()
+			// make ordenation and comparation with bytes to correctly compare
+			sort.Slice(r, func(i, j int) bool {
+				a, _ := r[i]["id"].(string)
+				b, _ := r[j]["id"].(string)
+				return a < b
+			})
 			a, _ := json.Marshal(r)
 			b, _ := json.Marshal(tc.out)
 			if !reflect.DeepEqual(a, b) {
