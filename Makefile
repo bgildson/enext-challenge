@@ -9,3 +9,6 @@ report-general:
 
 report-by-game:
 	go run cmd/report/main.go -games-json-path=./games.json -general=false
+
+api:
+	go run ./cmd/api/main.go -games-json-path=./games.json -port=8080
