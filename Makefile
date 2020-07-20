@@ -12,3 +12,5 @@ report-by-game:
 
 api:
 	go run ./cmd/api/main.go -games-json-path=./games.json -port=8080
+
+.PHONY: test parse report-general report-by-game api
