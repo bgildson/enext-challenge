@@ -1,5 +1,8 @@
 # ENEXT-CHALLENGE
 
+[![Test Status](https://github.com/bgildson/enext-challenge/workflows/Test%20and%20Send%20Coverage%20Report/badge.svg)](https://github.com/bgildson/enext-challenge/actions?workflow=test)
+[![Coverage Status](https://coveralls.io/repos/github/bgildson/enext-challenge/badge.svg?branch=master)](https://coveralls.io/github/bgildson/enext-challenge?branch=master)
+
 This repository contains the source code to satisfy the [enext challenge](CHALLENGE.md).
 
 ## How to run the challenge solution
