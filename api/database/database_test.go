@@ -48,6 +48,9 @@ func TestNewJSONDatabase(t *testing.T) {
 
 func TestJSONDatabaseGet(t *testing.T) {
 	basePath, err := os.Getwd()
+	if err != nil {
+		t.Errorf("could not get database base url")
+	}
 	gamesPath := path.Join(basePath, "..", "..", "fixtures", "games.json")
 	d, err := NewJSONDatabase(gamesPath)
 	if err != nil {
@@ -112,6 +115,9 @@ func TestJSONDatabaseGet(t *testing.T) {
 
 func TestJSONDatabaseGetByID(t *testing.T) {
 	basePath, err := os.Getwd()
+	if err != nil {
+		t.Errorf("could not get database base url")
+	}
 	gamesPath := path.Join(basePath, "..", "..", "fixtures", "games.json")
 	d, err := NewJSONDatabase(gamesPath)
 	if err != nil {
